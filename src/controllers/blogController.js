@@ -39,7 +39,7 @@ const fetchBlogs = async function (req, res) {
 
         let querybody = req.query;
        // console.log(querybody)
-        if(querybody[0]== null){
+        if(querybody[0]= null){
            return res.status(404).send({status: false, msg: 'no query parametres given'})
         }
         else{
