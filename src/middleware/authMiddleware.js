@@ -1,20 +1,14 @@
 const jwt=require("jsonwebtoken")
 
 const middleWare = async function(req, res, next){
-
     try{
-    let token=req.headers['x-api-key']
-    
-    if(!token)
-    {
+    let token=req.headers['x-api-key']    
+    if(!token) {
         return res.send({ status: false, Message: 'No token found' })
-    }else
-    {     
-      //  console.log("jfb")
-        let decodedtoken = jwt.verify(token, 'Group2')
-         // console.log(decodedtoken)
-        if(decodedtoken.length != 0)
-        {
+    }
+    else {         
+        let decodedtoken = jwt.verify(token, 'Group2')      
+        if(decodedtoken.length != 0)  {
             req.decodedtoken=decodedtoken;
             next();
         }else{
