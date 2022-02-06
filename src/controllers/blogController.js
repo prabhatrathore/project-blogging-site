@@ -43,12 +43,12 @@ const fetchBlogs = async function (req, res) {
         if (req.query.subcategory) {
             getQuery.subcategory = queryParams.subcategory
         }
-        let block = await blogModel.find(getQuery)
+        let blog = await blogModel.find(getQuery)
         if (block.length == 0) {
             res.status(404).send({ status: false, data: "blog not found!!" })
         }
         else {
-            res.status(200).send({ status: true, msg: block })
+            res.status(200).send({ status: true, msg: blog })
         }
     } catch (err) {
         res.status(500).send({ status: false, msg: err.message })
